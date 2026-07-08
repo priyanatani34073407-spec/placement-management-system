@@ -1,0 +1,163 @@
+/* Dashboard */
+
+.dashboard {
+    margin-left: 250px;
+    margin-top: 75px;
+    margin-bottom: 60px;
+    padding: 30px;
+    min-height: calc(100vh - 135px);
+    background: #f4f7fc;
+}
+
+/* Heading */
+
+.dashboard h1 {
+    font-size: 32px;
+    color: #1e3a8a;
+    margin-bottom: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Cards */
+
+.Cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+/* Card */
+
+.Card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.Card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(37,99,235,0.25);
+}
+
+/* Number */
+
+.Card h2 {
+    font-size: 42px;
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+/* Label */
+
+.Card p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Buttons */
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-group button {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-group button:hover {
+    background: #1d4ed8;
+    transform: scale(1.1);
+}
+
+.btn-group button:active {
+    transform: scale(0.95);
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+    .dashboard{
+        margin-left:200px;
+        padding:20px;
+    }
+
+    .dashboard h1{
+        font-size:26px;
+    }
+
+    .Card h2{
+        font-size:34px;
+    }
+
+}
+
+@media (max-width:600px){
+
+    .dashboard{
+        margin-left:0;
+        margin-top:65px;
+        padding:15px;
+    }
+
+    .Cards{
+        grid-template-columns:1fr;
+    }
+
+}
+.student-list,
+.student-details {
+    margin-top: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.student-list h2,
+.student-details h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.student-list ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.student-list li {
+    margin: 8px 0;
+    font-size: 17px;
+}
+
+.student-list button,
+.student-details button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.student-list button:hover,
+.student-details button:hover {
+    background: #1d4ed8;
+}

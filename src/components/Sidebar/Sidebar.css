@@ -1,0 +1,56 @@
+/* Sidebar */
+
+.sidebar {
+    width: 250px;
+    height: calc(100vh - 75px); /* Adjusts below navbar */
+    background-color: #1e293b;
+    color: white;
+
+    position: fixed;
+    left: 0;
+    top: 75px;
+
+    padding-top: 25px;
+
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Remove list style */
+.sidebar ul {
+    list-style: none;
+}
+
+/* Menu Items */
+.sidebar ul li {
+    padding: 16px 30px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.sidebar ul li:hover {
+    background-color: #2563eb;
+    padding-left: 40px;
+}
+
+/* Active Effect (Optional) */
+.sidebar ul li:active {
+    background-color: #1d4ed8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar ul li {
+        font-size: 16px;
+        padding: 14px 20px;
+    }
+}
