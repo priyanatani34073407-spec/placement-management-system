@@ -1,70 +1,68 @@
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 /* Navbar */
+
 .navbar {
     width: 100%;
-    height: 75px;
-    background: #1e3a8a; /* Deep Blue */
+    height: 70px;
+    background: #111827;
     color: white;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    padding: 0 40px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 0 35px;
 
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+
     z-index: 1000;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Heading */
-.navbar h1 {
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-family: Arial, Helvetica, sans-serif;
-    cursor: default;
+/* Logo */
+
+.logo h2{
+    font-size:24px;
+    font-weight:600;
+    letter-spacing:1px;
 }
 
-/* Profile Circle */
-.Profile {
-    width: 50px;
-    height: 50px;
-    background: white;
-    border: 3px solid #60a5fa;
-    border-radius: 50%;
+/* Profile */
 
-    cursor: pointer;
+.profile{
+    width:45px;
+    height:45px;
 
-    transition: all 0.3s ease;
+    border-radius:50%;
+
+    background:#10B981;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.3s;
 }
 
-/* Hover Effect */
-.Profile:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+.profile:hover{
+    transform:scale(1.08);
+    background:#059669;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .navbar {
-        padding: 0 20px;
-        height: 65px;
+@media(max-width:768px){
+
+    .navbar{
+        padding:0 20px;
     }
 
-    .navbar h1 {
-        font-size: 20px;
+    .logo h2{
+        font-size:18px;
     }
 
-    .Profile {
-        width: 42px;
-        height: 42px;
-    }
 }

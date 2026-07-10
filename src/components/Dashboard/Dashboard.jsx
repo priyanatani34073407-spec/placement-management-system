@@ -1,196 +1,86 @@
-import { useState } from "react";
 import "./Dashboard.css";
 
-function Dashboard() {
+function Dashboard({ students }) {
 
-  // Number States
-  const [students, setStudents] = useState(250);
-  const [companies, setCompanies] = useState(33);
-  const [placed, setPlaced] = useState(80);
+  const totalStudents = students.length;
 
-  // String State
-  const [name, setName] = useState("Lucky");
+  const totalBranches = [
+    ...new Set(
+      students.map((student) => student.branch)
+    ),
+  ].length;
 
-  // Boolean State
-  const [login, setLogin] = useState(false);
-
-  // Array State
-  const [studentsList, setStudentsList] = useState([]);
-
-  // Object State
-  const [student, setStudent] = useState({
-    name: "N.Guna Sri",
-    course: "CAI",
-  });
-
-  // Load Student List
-  function addStudent() {
-    setStudentsList([
-      "Shanmukh",
-      "Rahul",
-      "Ravi",
-      "Anjali",
-      "Gunasri"
-    ]);
-  }
-
-  // Change Object
-  function changeStudent() {
-    setStudent({
-      name: "Lucky",
-      course: "Artificial Intelligence",
-    });
-  }
-
-  // Change Name
-  function changeName() {
-    setName("Gunasri");
-  }
-
-  // Toggle Login
-  function toggleLogin() {
-    setLogin(!login);
-  }
-
-  // Increase Students
-  function increaseStudents() {
-    setStudents(students + 1);
-  }
-
-  // Decrease Students
-  function decreaseStudents() {
-    if (students > 0) {
-      const updatedStudents = students - 1;
-      setStudents(updatedStudents);
-
-      if (placed > updatedStudents) {
-        setPlaced(updatedStudents);
-      }
-    }
-  }
-
-  // Increase Companies
-  function increaseCompanies() {
-    setCompanies(companies + 1);
-  }
-
-  // Decrease Companies
-  function decreaseCompanies() {
-    if (companies > 0) {
-      setCompanies(companies - 1);
-    }
-  }
-
-  // Increase Placed Students
-  function increasePlaced() {
-    if (placed < students) {
-      setPlaced(placed + 1);
-    }
-  }
-
-  // Decrease Placed Students
-  function decreasePlaced() {
-    if (placed > 0) {
-      setPlaced(placed - 1);
-    }
-  }
+  const averageCGPA =
+    students.length === 0
+      ? 0
+      : (
+          students.reduce(
+            (sum, student) =>
+              sum + Number(student.cgpa),
+            0
+          ) / students.length
+        ).toFixed(2);
 
   return (
     <div className="dashboard">
 
-      <h1>Welcome Back, {name}</h1>
+      <h1>Placement Management Dashboard</h1>
 
-      <button onClick={changeName}>Change Name</button>
+      <p className="dashboard-subtitle">
+        Welcome to the Student Placement Management System
+      </p>
 
-      <button onClick={toggleLogin}>
-        {login ? "Logout" : "Login"}
-      </button>
+      <div className="dashboard-cards">
 
-      <h3>
-        Status :
-        {login ? " 🟢 Logged In" : " 🔴 Logged Out"}
-      </h3>
+        <div className="dashboard-card">
 
-      <div className="Cards">
+          <h2>{totalStudents}</h2>
 
-        {/* Students */}
-
-        <div className="Card">
-          <h2>{students}</h2>
           <p>Total Students</p>
 
-          <div className="btn-group">
-            <button onClick={increaseStudents}>+</button>
-            <button onClick={decreaseStudents}>-</button>
-          </div>
         </div>
 
-        {/* Companies */}
+        <div className="dashboard-card">
 
-        <div className="Card">
-          <h2>{companies}</h2>
-          <p>Total Companies</p>
+          <h2>{totalBranches}</h2>
 
-          <div className="btn-group">
-            <button onClick={increaseCompanies}>+</button>
-            <button onClick={decreaseCompanies}>-</button>
-          </div>
+          <p>Total Branches</p>
+
         </div>
 
-        {/* Placed */}
+        <div className="dashboard-card">
 
-        <div className="Card">
-          <h2>{placed}</h2>
-          <p>Placed Students</p>
+          <h2>{averageCGPA}</h2>
 
-          <div className="btn-group">
-            <button onClick={increasePlaced}>+</button>
-            <button onClick={decreasePlaced}>-</button>
-          </div>
-        </div>
+          <p>Average CGPA</p>
 
-        {/* Pending */}
-
-        <div className="Card">
-          <h2>{students - placed}</h2>
-          <p>Pending Placements</p>
         </div>
 
       </div>
 
-      {/* Student List */}
+      {students.length === 0 ? (
 
-      <div className="student-list">
+        <div className="dashboard-empty">
 
-        <h2>Student List</h2>
+          <h2>No Student Data Available</h2>
 
-        <button onClick={addStudent}>
-          Show Students
-        </button>
+          <p>
+            Register students to view dashboard statistics.
+          </p>
 
-        <ul>
-          {studentsList.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
+        </div>
 
-      </div>
+      ) : (
 
-      {/* Object */}
+        <div className="dashboard-success">
 
-      <div className="student-details">
+          <h3>
+            Student records loaded successfully.
+          </h3>
 
-        <h2>Student Details</h2>
+        </div>
 
-        <p><strong>Name :</strong> {student.name}</p>
-
-        <p><strong>Course :</strong> {student.course}</p>
-
-        <button onClick={changeStudent}>
-          Change Student
-        </button>
-
-      </div>
+      )}
 
     </div>
   );

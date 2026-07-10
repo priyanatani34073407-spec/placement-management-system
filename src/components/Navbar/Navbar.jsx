@@ -1,11 +1,17 @@
-//NavBar Components
 import "./Navbar.css";
-const Navbar = function(){
-  return(
+
+function Navbar() {
+  return (
     <nav className="navbar">
-      <h1>Placement Management System</h1>
-      <div className="Profile"></div>
+      <div className="logo">
+        <h2>Placement Management System</h2>
+      </div>
+
+      <div className="profile">
+        <span>👤</span>
+      </div>
     </nav>
-  )
-};
+  );
+}
+
 export default Navbar;

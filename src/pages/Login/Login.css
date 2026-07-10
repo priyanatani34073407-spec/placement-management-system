@@ -1,0 +1,157 @@
+.login-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:80vh;
+
+}
+
+.login-box{
+
+    width:420px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:15px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.login-box h1{
+
+    text-align:center;
+
+    color:#1E3A8A;
+
+    margin-bottom:10px;
+
+}
+
+.login-box h2{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    color:#555;
+
+}
+
+.login-box input{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:18px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+}
+
+.password-box{
+
+    position:relative;
+
+}
+
+.toggle-btn{
+
+    position:absolute;
+
+    right:5px;
+
+    top:4px;
+
+    width:70px;
+
+    height:38px;
+
+    font-size:14px;
+
+}
+
+.login-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.login-buttons button{
+
+    flex:1;
+
+}
+
+.clear-btn{
+
+    background:#dc2626;
+
+}
+
+.clear-btn:hover{
+
+    background:#b91c1c;
+
+}
+
+.forgot{
+
+    margin-top:20px;
+
+    text-align:right;
+
+    color:#2563EB;
+
+    cursor:pointer;
+
+}
+
+.register{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    color:#2563EB;
+
+    cursor:pointer;
+
+}
+
+.success{
+
+    margin-top:20px;
+
+    color:green;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
+
+.error{
+
+    margin-top:20px;
+
+    color:red;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}

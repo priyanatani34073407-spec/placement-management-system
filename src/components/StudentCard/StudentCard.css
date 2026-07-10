@@ -1,0 +1,55 @@
+.student-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+
+    transition:0.3s;
+
+    border-top:5px solid #2563eb;
+
+}
+
+.student-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 12px 25px rgba(37,99,235,.25);
+
+}
+
+.student-header{
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+}
+
+.student-header h2{
+
+    color:#1e3a8a;
+
+    font-size:22px;
+
+}
+
+.student-body p{
+
+    margin:10px 0;
+
+    color:#475569;
+
+    font-size:15px;
+
+}
+
+.student-body strong{
+
+    color:#0f172a;
+
+}

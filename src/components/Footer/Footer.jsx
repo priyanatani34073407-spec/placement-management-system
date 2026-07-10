@@ -2,9 +2,10 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <footer>
-      <p>© 2026 Placement Management System. All Rights Reserved.</p>
+    <footer className="footer">
+      <p>© 2026 Placement Management System | Designed by N. Guna Sri</p>
     </footer>
   );
 }
+
 export default Footer;

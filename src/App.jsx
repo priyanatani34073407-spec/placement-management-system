@@ -3,41 +3,54 @@ import "./App.css";
 
 import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
+import Dashboard from "./components/Dashboard/Dashboard";
 import Footer from "./components/Footer/Footer";
-import Register from "./pages/Registartion/Register";
+
+import Login from "./pages/Login/Login";
+import Register from "./pages/Registration/Register";
+import Student from "./pages/Student/Student";
 
 function App() {
-  const [students, setStudents] = useState(250);
+  // Sidebar Page Navigation
+  const [page, setPage] = useState("dashboard");
 
-  const addStudent = () => {
-    setStudents((prevStudents) => prevStudents + 1);
-  };
+  // Shared Student Data
+  const [students, setStudents] = useState([]);
 
   return (
-    <>
+    <div className="app">
       <Navbar />
 
       <div className="main-container">
-        <Sidebar />
+        <Sidebar setPage={setPage} />
 
         <div className="content">
+          {page === "dashboard" && (
+            <Dashboard students={students} />
+          )}
 
-          <div className="dashboard">
-            <h2>Total Students</h2>
-            <h1>{students}</h1>
+          {page === "register" && (
+            <Register
+              students={students}
+              setStudents={setStudents}
+            />
+          )}
 
-            <button onClick={addStudent}>
-              Add Student
-            </button>
-          </div>
+          {page === "students" && (
+            <Student
+                students={students}
+                setStudents={setStudents}
+            />
+          )}
 
-          <Register />
-
+          {page === "login" && (
+            <Login />
+          )}
         </div>
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 }
 
