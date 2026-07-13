@@ -1,29 +1,24 @@
 import "./Sidebar.css";
+import { Link } from "react-router-dom";
 
-function Sidebar({ setPage }) {
+function Sidebar() {
   return (
     <div className="sidebar">
 
-      <h2 className="sidebar-title">
-        Menu
-      </h2>
+      <h2 className="sidebar-title">Menu</h2>
 
       <ul>
 
-        <li onClick={() => setPage("dashboard")}>
-          📊 Dashboard
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
         </li>
 
-        <li onClick={() => setPage("register")}>
-          📝 Register Student
+        <li>
+          <Link to="/register">Register Student</Link>
         </li>
 
-        <li onClick={() => setPage("students")}>
-          👨‍🎓 Students
-        </li>
-
-        <li onClick={() => setPage("login")}>
-          🔐 Login
+        <li>
+          <Link to="/student">Students</Link>
         </li>
 
       </ul>

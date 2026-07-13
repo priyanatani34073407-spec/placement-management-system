@@ -1,165 +1,96 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
-function Login() {
+function Login({ students }) {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [showPassword, setShowPassword] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
   const [message, setMessage] = useState("");
 
-  const [success, setSuccess] = useState(false);
+  function handleLogin(){
 
-  function handleLogin() {
-
-    if (email.trim() === "" || password.trim() === "") {
-      setMessage("Please fill all the fields.");
-      setSuccess(false);
-      return;
-    }
-
-    setLoading(true);
-
-    setTimeout(() => {
-
-      if (
-        email === "admin@gmail.com" &&
-        password === "Admin@123"
-      ) {
-        setSuccess(true);
-        setMessage("Login Successful ✅");
+      if(email==="" || password===""){
+          setMessage("Please fill all fields.");
+          return;
       }
 
-      else {
-        setSuccess(false);
-        setMessage("Invalid Email or Password ❌");
-      }
+      setLoading(true);
 
-      setLoading(false);
+      setTimeout(()=>{
 
-    },2000);
+          const student = students.find(
+              (student)=>
+              student.email===email &&
+              student.password===password
+          );
 
-  }
+          if(student){
+              setMessage("Login Successful");
+          }
+          else{
+              setMessage("Invalid Email or Password");
+          }
 
-  function clearForm(){
+          setLoading(false);
 
-    setEmail("");
-    setPassword("");
-    setMessage("");
-    setShowPassword(false);
+      },2000);
 
   }
 
   return(
 
-    <div className="login-container">
+      <div className="login-container">
 
-      <div className="login-box">
+          <div className="login-card">
 
-        <h1>Placement Management System</h1>
+              <h1>Placement Management Login</h1>
 
-        <h2>Login</h2>
+              <input
+                  type="email"
+                  placeholder="Enter Email"
+                  value={email}
+                  onChange={(e)=>setEmail(e.target.value)}
+              />
 
-        <input
+              <input
+                  type="password"
+                  placeholder="Enter Password"
+                  value={password}
+                  onChange={(e)=>setPassword(e.target.value)}
+              />
 
-          type="email"
+              <button
+                  onClick={handleLogin}
+                  disabled={loading}
+              >
+                  {loading ? "Logging..." : "Login"}
+              </button>
 
-          placeholder="Enter Email"
+              {message &&
 
-          value={email}
+                  <p className="message">
+                      {message}
+                  </p>
 
-          onChange={(e)=>setEmail(e.target.value)}
+              }
 
-        />
+              <p>
 
-        <div className="password-box">
+                  Don't have an account?
 
-          <input
+                  <Link to="/register">
+                      Register
+                  </Link>
 
-            type={showPassword ? "text" : "password"}
+              </p>
 
-            placeholder="Enter Password"
-
-            value={password}
-
-            onChange={(e)=>setPassword(e.target.value)}
-
-          />
-
-          <button
-
-            className="toggle-btn"
-
-            onClick={()=>setShowPassword(!showPassword)}
-
-          >
-
-            {showPassword ? "Hide" : "Show"}
-
-          </button>
-
-        </div>
-
-        <div className="login-buttons">
-
-          <button
-
-            onClick={handleLogin}
-
-            disabled={loading}
-
-          >
-
-            {loading ? "Logging in..." : "Login"}
-
-          </button>
-
-          <button
-
-            className="clear-btn"
-
-            onClick={clearForm}
-
-          >
-
-            Clear
-
-          </button>
-
-        </div>
-
-        <p className="forgot">
-
-          Forgot Password?
-
-        </p>
-
-        <p className="register">
-
-          New User? Register
-
-        </p>
-
-        {message && (
-
-          <p
-
-            className={success ? "success" : "error"}
-
-          >
-
-            {message}
-
-          </p>
-
-        )}
+          </div>
 
       </div>
-
-    </div>
 
   );
 
