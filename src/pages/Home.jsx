@@ -1,12 +1,11 @@
-import Dashboard from "../components/Dashboard/Dashboard";
-import Heading from "../components/Heading";
-
-function Home() {
-  return (
-    <div>
-      <Dashboard  />
-      <Heading />
-    </div>
-  ); 
+import Dashboard from '../Dashboard/Dashboard';
+import Heading from '../Heading';
+function Home(){
+    return(
+        <div>
+            <Dashboard />
+            
+        </div>
+    )
 };
 export default Home;
