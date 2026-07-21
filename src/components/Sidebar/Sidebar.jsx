@@ -1,29 +1,77 @@
+import { NavLink , useNavigate} from "react-router-dom";
 import "./Sidebar.css";
-import { Link } from "react-router-dom";
+import Login from "../pages/Login/Login";
 
 function Sidebar() {
+  const navigate = useNavigate();
+  
+  function Logout() {
+    localStorage.removeItem("isLoggedIn")
+    navigate("/Login");
+  }
   return (
-    <div className="sidebar">
+    <ul className="sidebar">
+      <NavLink
+        to="/Dashboard"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
+        <li>Dashboard</li>
+      </NavLink>
 
-      <h2 className="sidebar-title">Menu</h2>
+      <NavLink
+        to="/Register"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
+        <li>Student Registration</li>
+      </NavLink>
 
-      <ul>
+      <NavLink
+        to="/students"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
+        <li>Students</li>
+      </NavLink>
 
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
+      <NavLink
+        to="/companies"
+        className={({ isActive }) => (isActive ? "active" : "")}
+        >
+      <li>Companies</li>
+      </NavLink>
+        
+        <NavLink
+          to="/company-registration"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          <li>Company Registration</li>
+        </NavLink>
 
-        <li>
-          <Link to="/register">Register Student</Link>
-        </li>
+      <NavLink
+        to="/Placements"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
+        <li>Placements</li>
+      </NavLink>
 
-        <li>
-          <Link to="/student">Students</Link>
-        </li>
+      <NavLink
+        to="/Reports"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
+        <li>Reports</li>
+      </NavLink>
 
-      </ul>
+      <NavLink
+        to="/Settings"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
+        <li>Settings</li>
+      </NavLink>
 
-    </div>
+      <button onClick={Logout}>
+        <li>Logout</li>
+        </button>
+      
+    </ul>
   );
 }
 
