@@ -1,0 +1,37 @@
+.company-registration {
+    width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+
+.company-registration h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.company-registration form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.company-registration input {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.company-registration button {
+    padding: 10px;
+    background: #1976d2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.company-registration button:hover {
+    background: #1259a7;
+}
