@@ -1,41 +1,81 @@
-.main-container{
-    display:flex;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.content{
-    margin-left:250px;
-    margin-top:75px;
-    margin-bottom:60px;
-    padding:30px;
-    width:calc(100% - 250px);
-    min-height:calc(100vh - 135px);
-    background:#f4f7fc;
+/* Body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f9;
 }
 
-@media(max-width:768px){
-
-    .content{
-
-        margin-left:200px;
-
-        width:calc(100% - 200px);
-
-    }
-
+/* Root container */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-@media(max-width:600px){
+/* Main Section */
+.main {
+  display: flex;
+  flex: 1;
+  background-color: #f4f6f9;
+}
 
-    .content{
+/* Sidebar */
+.main aside {
+  width: 250px;
+}
 
-        margin-left:0;
+/* Content Area */
+.main section,
+.main .content {
+  flex: 1;
+  padding: 20px;
+}
 
-        width:100%;
+/* Registration Component */
+.registration-container {
+  width: 450px;
+  margin: 30px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
 
-        margin-top:65px;
+/* Footer */
+footer {
+  width: 100%;
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: auto;
+}
 
-        padding:15px;
+/* Responsive */
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
 
-    }
+  .main aside {
+    width: 100%;
+  }
 
+  .registration-container {
+    width: 90%;
+  }
+}
+.main {
+    display: flex;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
 }
