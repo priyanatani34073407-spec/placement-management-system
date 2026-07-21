@@ -1,99 +1,135 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
-function Login({ students }) {
+function Login() {
+  const navigate = useNavigate();
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [message, setMessage] = useState("");
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  function handleLogin(){
+  const passwordPattern =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-      if(email==="" || password===""){
-          setMessage("Please fill all fields.");
-          return;
-      }
+  // Function to check login status
+  function loginStatus() {
+    const loggedIn = localStorage.getItem("isLoggedIn");
 
-      setLoading(true);
-
-      setTimeout(()=>{
-
-          const student = students.find(
-              (student)=>
-              student.email===email &&
-              student.password===password
-          );
-
-          if(student){
-              setMessage("Login Successful");
-          }
-          else{
-              setMessage("Invalid Email or Password");
-          }
-
-          setLoading(false);
-
-      },2000);
-
+    if (loggedIn === "true") {
+      setIsLoggedIn(true);
+      navigate("/Dashboard");
+    } else {
+      setIsLoggedIn(false);
+    }
   }
 
-  return(
+  // Check login status when component loads
+useEffect(() => {
+  const status = loginStatus();
 
-      <div className="login-container">
+  if (!status) {
+    navigate("/login");
+  }
+}, []);
 
-          <div className="login-card">
+  function handleLogin() {
+    setLoading(true);
 
-              <h1>Placement Management Login</h1>
+    setTimeout(() => {
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email.");
+        setLoading(false);
+        return;
+      }
 
-              <input
-                  type="email"
-                  placeholder="Enter Email"
-                  value={email}
-                  onChange={(e)=>setEmail(e.target.value)}
-              />
+      if (!passwordPattern.test(password)) {
+        alert(
+          "Password should contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character."
+        );
+        setLoading(false);
+        return;
+      }
 
-              <input
-                  type="password"
-                  placeholder="Enter Password"
-                  value={password}
-                  onChange={(e)=>setPassword(e.target.value)}
-              />
+      if (email !== "admin@gmail.com" || password !== "Admin@123") {
+        alert("Invalid Email or Password");
+        setLoading(false);
+        return;
+      }
 
-              <button
-                  onClick={handleLogin}
-                  disabled={loading}
-              >
-                  {loading ? "Logging..." : "Login"}
-              </button>
+      alert("Login Successful!");
 
-              {message &&
+      localStorage.setItem("isLoggedIn", "true");
+      setLoading(false);
 
-                  <p className="message">
-                      {message}
-                  </p>
+      loginStatus();
+    }, 2000);
+  }
 
-              }
+  function handleLogout() {
+    localStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
+    setEmail("");
+    setPassword("");
 
-              <p>
+    navigate("/");
+  }
 
-                  Don't have an account?
+  return (
+    <div className="login-container">
+      {!isLoggedIn ? (
+        <>
+          <h1>Placement Management Login</h1>
 
-                  <Link to="/register">
-                      Register
-                  </Link>
+          <input
+            type="email"
+            placeholder="Enter Email"
+            value={email}
+            disabled={loading}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-              </p>
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Enter Password"
+            value={password}
+            disabled={loading}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-          </div>
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? "Hide Password" : "Show Password"}
+          </button>
 
-      </div>
+          <button
+            type="button"
+            onClick={handleLogin}
+            disabled={loading}
+          >
+            {loading ? "Logging in..." : "Login"}
+          </button>
 
+          <p className="register-text">
+            Don't have an account?
+            <Link to="/Register"> Register</Link>
+          </p>
+        </>
+      ) : (
+        <>
+          <h2>Welcome Back!</h2>
+
+          <button onClick={handleLogout}>Logout</button>
+        </>
+      )}
+    </div>
   );
-
 }
 
 export default Login;
