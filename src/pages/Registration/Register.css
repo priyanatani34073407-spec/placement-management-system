@@ -1,109 +1,122 @@
-.register-container{
+/* Page */
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:30px;
-
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f5f9;
 }
 
-.register-box{
+/* Registration Form */
 
-    width:550px;
-
-    background:white;
-
-    padding:30px;
-
-    border-radius:15px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
-
+.register-container {
+    width: 450px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    text-align: center;
 }
 
-.register-box h1{
+/* Heading */
 
-    text-align:center;
-
-    color:#1E3A8A;
-
-    margin-bottom:25px;
-
+.register-container h1 {
+    color: #333;
+    margin-bottom: 25px;
 }
 
-.register-box input{
+/* Inputs */
 
-    width:100%;
-
-    padding:12px;
-
-    margin-bottom:15px;
-
-    border:1px solid #ccc;
-
-    border-radius:8px;
-
-    font-size:15px;
-
+.register-container input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.3s;
 }
 
-.register-box input:focus{
-
-    outline:none;
-
-    border-color:#2563EB;
-
+.register-container input:focus {
+    border-color: #2563eb;
 }
 
-.button-group{
-
-    display:flex;
-
-    gap:15px;
-
+.register-container input:hover {
+    border-color: #2563eb;
 }
 
-.button-group button{
+/* Buttons */
 
-    flex:1;
-
+.register-container button {
+    width: 90%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.button-group button:last-child{
-
-    background:#DC2626;
-
+.register-container button:hover {
+    background-color: #1d4ed8;
 }
 
-.button-group button:last-child:hover{
+/* Login Text */
 
-    background:#B91C1C;
-
+.register-container h4 {
+    margin-top: 25px;
+    color: #555;
+    font-weight: normal;
 }
 
-.success{
+/* Student Table */
 
-    text-align:center;
-
-    margin-top:20px;
-
-    color:green;
-
-    font-weight:bold;
-
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 30px;
 }
 
-.error{
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
 
-    text-align:center;
+table,
+th,
+td {
+    border: 1px solid #ddd;
+}
 
-    margin-top:20px;
+th {
+    background-color: #2563eb;
+    color: white;
+}
 
-    color:red;
+th,
+td {
+    padding: 10px;
+    text-align: center;
+}
 
-    font-weight:bold;
+/* Responsive */
 
+@media (max-width: 768px) {
+
+    .register-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .register-container input,
+    .register-container button {
+        width: 100%;
+    }
 }
